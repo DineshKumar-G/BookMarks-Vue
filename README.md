@@ -1,6 +1,6 @@
-# test
+# Link Bookmarking page with Authentication using FireBase Built with Vue and Bulma
 
-> A Vue.js project
+> A Vue.js + Bulma project
 
 ## Build Setup
 
