@@ -74,9 +74,6 @@ export default {
 
 created(){
     this.email = this.$store.state.currentEmail;
-    // for (let key in this.$store.state.currentBookMarks) {
-    //   console.log(this.$store.state.currentBookMarks + "abc");
-    // }
     axios
       .get("https://vue-bookmarks-29343.firebaseio.com/bookmarks.json")
       .then(res => {
@@ -106,10 +103,7 @@ created(){
       else {
         this.dispLinks.push(this.newLink);
       this.dispNotes.push(this.newNotes);
-      this.email = this.$store.state.currentEmail;
-      console.log(this.email + "store");
-      console.log("add");
-      
+      this.email = this.$store.state.currentEmail;      
         var currentdate = new Date();
         var datetime =
           currentdate.getDate() +

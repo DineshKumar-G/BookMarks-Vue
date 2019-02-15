@@ -26,7 +26,6 @@ import { EventBus } from './Events.js';
     },
     created() {
         EventBus.$on('emittedEvent', data => {
-          console.log(data)
         this.loggedIn = data;
         });
     }, 

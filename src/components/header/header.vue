@@ -43,7 +43,6 @@ export default {
     }, 
     methods : {
       loggout(){
-        console.log('logout')
         this.loggedIn=false;
       }
     }

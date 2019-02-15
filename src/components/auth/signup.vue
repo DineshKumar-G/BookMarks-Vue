@@ -122,7 +122,6 @@ export default {
         users.forEach(us => {
           this.existingEmails.push(us.email);
         });
-        console.log(this.existingEmails);
       })
       .catch(error => console.log(error));
   },
