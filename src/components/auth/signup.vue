@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Age</label>
+            <label class="label">Agee</label>
             <div class="control has-icons-left">
               <input
                 class="input"
@@ -91,8 +91,8 @@
 </template>
 
 <script>
-import { EventBus } from '../../Events.js';
-
+import { EventBus } from "../../Events.js";
+import $ from "jquery";
 
 import axios from "axios";
 export default {
@@ -131,24 +131,24 @@ export default {
       if (!this.existingEmails.includes(this.email)) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!re.test(String(this.email).toLowerCase())) {
-
-                this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Please Enter valid Email id</strong>',
-                    type: 'is-danger',
-                })
+          this.$dialog.alert({
+            title: "Error",
+            message: "<strong>Please Enter valid Email id</strong>",
+            type: "is-danger"
+          });
         } else if (!this.password || this.password.length < 8) {
           this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Password has to be 8 characters long</strong>',
-                    type: 'is-danger',
-                })
+            title: "Error",
+            message: "<strong>Password has to be 8 characters long</strong>",
+            type: "is-danger"
+          });
         } else if (this.password !== this.confirmPassword) {
           this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Type the same password in both the password fields</strong>',
-                    type: 'is-danger',
-                })
+            title: "Error",
+            message:
+              "<strong>Type the same password in both the password fields</strong>",
+            type: "is-danger"
+          });
         } else {
           const formData = {
             email: this.email,
@@ -162,21 +162,31 @@ export default {
               "https://vue-bookmarks-29343.firebaseio.com/users.json",
               formData
             )
-            .then(res => 
-            this.$dialog.alert({
-                    title: 'User Added!',
-                    message: '<strong>You can Sign in now!</strong>',
-                    type: 'is-success',
-                }))
+            .then(
+              res =>
+                Email.send({
+                  Host: "smtp25.elasticemail.com",
+                  Username: "testttt220188@gmail.com",
+                  Password: "1016ba89-c158-45da-ad82-c9420860a2e8",
+                  To: this.email,
+                  From: "testttt220188@gmail.com",
+                  Subject: "Welcome to Vue Bookmarks",
+                  Body: "You can add bookmarks now!!"
+                }).then(message => this.$dialog.alert({
+                title: 'Success',
+                message: "<strong>Mail has been sent to your email Id and you can Log in now!</strong>",
+                type: "is-success"
+              })),
+            )
             .catch(error => console.log(error));
-          //this.$router.push({ name: 'signin' });
+          
         }
       } else {
         this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Email Already Exists!!!</strong>',
-                    type: 'is-danger',
-                })
+          title: "Error",
+          message: "<strong>Email Already Exists!!!</strong>",
+          type: "is-danger"
+        });
       }
     }
   }

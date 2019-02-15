@@ -1,9 +1,10 @@
 <template>
   <div id="welcome">
-    <div class="container is-fluid has-text-centered" style="padding-top:80px;">
+    <div class="container is-fluid has-text-centered" style="padding-top:5px;">
     <h1 class="title is-2 is-spaced ">Welcome to Vue Bookmarking page</h1>
         <h5 class="subtitle is-5">Firebase is used as DB server for authentication and storing the Bookmarks url</h5>
         <h5 class="subtitle is-5">Axios is used to perform HTTP opertaions</h5>
+        <h5 class="subtitle is-5">Email is sent on Sign up usin SMTP api</h5>
         <h5 class="subtitle is-5">Vuex is used with Store.js and Event Bus is used.</h5>
         <h5 class="subtitle is-5">Vue Router is used for navigation between a total of 4 pages</h5>
         <h5 class="subtitle is-5">Bulma is used for Styling</h5>
