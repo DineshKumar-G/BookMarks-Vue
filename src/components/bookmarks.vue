@@ -146,7 +146,11 @@ export default {
               title: "Success!",
               message: "<strong>Post is Added!</strong>",
               type: "is-success"
-            })
+            },
+            this.newLink="",
+            this.newNotes=""
+            )
+            
           )
           .catch(error => console.log(error));
       }
