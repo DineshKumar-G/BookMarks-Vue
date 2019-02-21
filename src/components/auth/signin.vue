@@ -48,8 +48,7 @@
 </template>
 
 <script>
-import { EventBus } from '../../Events.js';
-
+import { EventBus } from "../../Events.js";
 
 import axios from "axios";
 export default {
@@ -85,41 +84,39 @@ export default {
     onSubmit() {
       if (this.email === "" || this.password === "") {
         this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Email or password cannot be empty</strong>',
-                    type: 'is-danger',
-                })
+          title: "Error",
+          message: "<strong>Email or password cannot be empty</strong>",
+          type: "is-danger"
+        });
       } else {
         if (this.existingEmails.includes(this.email)) {
           var pos = this.existingEmails.indexOf(this.email);
           if (this.password === this.checkpassword[pos]) {
             this.$dialog.alert({
-                    title: 'Welcome!',
-                    message: '<strong>Logged in</strong>',
-                    type: 'is-success',
-                })
+              title: "Welcome!",
+              message: "<strong>Logged in</strong>",
+              type: "is-success"
+            });
             this.loggedIn = true;
-            EventBus.$emit('emittedEvent', this.loggedIn);
-            this.$store.state.currentEmail=this.email;
+            EventBus.$emit("emittedEvent", this.loggedIn);
+            this.$store.state.currentEmail = this.email;
 
-            this.$router.push({ name: "bookmarks", });
-
+            this.$router.push({ name: "bookmarks" });
           } else {
             this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Password Wrong</strong>',
-                    type: 'is-danger',
-                })
+              title: "Error",
+              message: "<strong>Password Wrong</strong>",
+              type: "is-danger"
+            });
           }
         } else {
           this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>email id is invalid</strong>',
-                    type: 'is-danger',
-                })
-          
+            title: "Error",
+            message: "<strong>email id is invalid</strong>",
+            type: "is-danger"
+          });
         }
-      }   
+      }
     }
   }
 };

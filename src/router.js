@@ -8,25 +8,25 @@ import BookmarkPage from './components/bookmarks.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { 
-    path: '/', 
-    component: WelcomePage 
+  {
+    path: '/',
+    component: WelcomePage
   },
-  { 
-    path: '/signup', 
-    component: SignupPage 
+  {
+    path: '/signup',
+    component: SignupPage
   },
-  { 
-    path: '/signin', 
-    name: 'signin', 
+  {
+    path: '/signin',
+    name: 'signin',
     component: SigninPage,
   },
-  { 
-    path: '/bookmaks', 
-    name: 'bookmarks', 
-    component:BookmarkPage,
+  {
+    path: '/bookmaks',
+    name: 'bookmarks',
+    component: BookmarkPage,
   },
-  
+
 ]
 
-export default new VueRouter({mode: 'history', routes})
+export default new VueRouter({ mode: 'history', routes })

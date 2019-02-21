@@ -135,7 +135,7 @@ export default {
             message: "<strong>Please Enter valid Email id</strong>",
             type: "is-danger"
           });
-        } else if (!this.password || this.password.length < 8) {
+        } else if (this.password.length < 8) {
           this.$dialog.alert({
             title: "Error",
             message: "<strong>Password has to be 8 characters long</strong>",
@@ -161,24 +161,25 @@ export default {
               "https://vue-bookmarks-29343.firebaseio.com/users.json",
               formData
             )
-            .then(
-              res =>
-                Email.send({
-                  Host: "smtp25.elasticemail.com",
-                  Username: "testttt220188@gmail.com",
-                  Password: "1016ba89-c158-45da-ad82-c9420860a2e8",
-                  To: this.email,
-                  From: "testttt220188@gmail.com",
-                  Subject: "Welcome to Vue Bookmarks",
-                  Body: "You can add bookmarks now!!"
-                }).then(message => this.$dialog.alert({
-                title: 'Success',
-                message: "<strong>Mail has been sent to your email Id and you can Log in now!</strong>",
-                type: "is-success"
-              })),
+            .then(res =>
+              Email.send({
+                Host: "smtp25.elasticemail.com",
+                Username: "testttt220188@gmail.com",
+                Password: "1016ba89-c158-45da-ad82-c9420860a2e8",
+                To: this.email,
+                From: "testttt220188@gmail.com",
+                Subject: "Welcome to Vue Bookmarks by G Dinesh Kumar",
+                Body: "You can add bookmarks now!!"
+              }).then(message =>
+                this.$dialog.alert({
+                  title: "Success",
+                  message:
+                    "<strong>Mail has been sent to your email Id and you can Log in now!</strong>",
+                  type: "is-success"
+                })
+              )
             )
             .catch(error => console.log(error));
-          
         }
       } else {
         this.$dialog.alert({

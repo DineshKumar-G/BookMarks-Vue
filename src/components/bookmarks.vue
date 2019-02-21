@@ -16,7 +16,12 @@
         <div class="field">
           <label class="label">Notes</label>
           <p class="control has-icons-left">
-            <input class="input" placeholder="Enter the Notes here" id="password" v-model="newNotes">
+            <input
+              class="input"
+              placeholder="Enter the Notes here"
+              id="password"
+              v-model="newNotes"
+            >
             <span class="icon is-small is-left">
               <icon name="bookmark"></icon>
             </span>
@@ -35,17 +40,25 @@
     <br>
     <br>
     <div class="list" style="padding:0 100px 0 100px;">
-      <div class="columns" >
+      <div class="columns">
         <div class="column is-6">
-          <label class="label"><strong class="is-size-3">Links</strong>⤵</label>
-          <div v-for="links in this.dispLinks" class="box" ><a v-bind:href="links">{{ links }}</a></div>
+          <label class="label">
+            <strong class="is-size-3">Links</strong>⤵
+          </label>
+          <div v-for="links in this.dispLinks" class="box">
+            <a v-bind:href="links">{{ links }}</a>
+          </div>
         </div>
         <div class="column is-3">
-          <label class="label"><strong class="is-size-3">Notes</strong>⤵</label>
+          <label class="label">
+            <strong class="is-size-3">Notes</strong>⤵
+          </label>
           <div v-for="notes in this.dispNotes" class="box">{{notes}}</div>
         </div>
         <div class="column is-3">
-          <label class="label"><strong class="is-size-3">Created At</strong>⤵</label>
+          <label class="label">
+            <strong class="is-size-3">Created At</strong>⤵
+          </label>
           <div v-for="timestampp in this.dispTime" :key="timestampp" class="box">{{timestampp}}</div>
         </div>
       </div>
@@ -63,7 +76,7 @@ export default {
     return {
       email: "",
       bookMarks: [],
-      bm:[],
+      bm: [],
       newLink: "",
       newNotes: "",
       dispLinks: [],
@@ -72,7 +85,7 @@ export default {
     };
   },
 
-created(){
+  created() {
     this.email = this.$store.state.currentEmail;
     axios
       .get("https://vue-bookmarks-29343.firebaseio.com/bookmarks.json")
@@ -93,17 +106,16 @@ created(){
   },
   methods: {
     AddBookMark() {
-      if (this.newLink === ""|| this.newNotes==="") { 
+      if (this.newLink === "" || this.newNotes === "") {
         this.$dialog.alert({
-                    title: 'Error',
-                    message: '<strong>Link or notes can not be empty</strong>',
-                    type: 'is-danger',
-                })  
-      }
-      else {
+          title: "Error",
+          message: "<strong>Link or notes can not be empty</strong>",
+          type: "is-danger"
+        });
+      } else {
         this.dispLinks.push(this.newLink);
-      this.dispNotes.push(this.newNotes);
-      this.email = this.$store.state.currentEmail;      
+        this.dispNotes.push(this.newNotes);
+        this.email = this.$store.state.currentEmail;
         var currentdate = new Date();
         var datetime =
           currentdate.getDate() +
@@ -124,15 +136,18 @@ created(){
           notes: this.newNotes,
           curTime: new Date().getTime()
         };
-        console.log(BookMarkData);
         axios
-          .post("https://vue-bookmarks-29343.firebaseio.com/bookmarks.json",BookMarkData)
+          .post(
+            "https://vue-bookmarks-29343.firebaseio.com/bookmarks.json",
+            BookMarkData
+          )
           .then(
-          this.$dialog.alert({
-                    title: 'Success!',
-                    message: '<strong>Post is Added!</strong>',
-                    type: 'is-success',
-                })  )
+            this.$dialog.alert({
+              title: "Success!",
+              message: "<strong>Post is Added!</strong>",
+              type: "is-success"
+            })
+          )
           .catch(error => console.log(error));
       }
     }
