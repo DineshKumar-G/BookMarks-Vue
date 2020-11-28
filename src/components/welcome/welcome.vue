@@ -12,9 +12,9 @@
       <h5 class="subtitle is-5">Bulma is used for Styling</h5>
       <h5 class="subtitle is-5">Buefy is used for Alerts</h5>
       <div class="buttons">
-        <router-link to="/signup" class="button is-primary">Sign Up</router-link>
+        <router-link to="/signup" class="button is-primary" v-if="!this.$store.state.isLoggedIn">Sign Up</router-link>
 
-        <router-link to="/signin" class="button is-danger">Sign In</router-link>
+        <router-link to="/signin" class="button is-danger" v-if="!this.$store.state.isLoggedIn">Sign In</router-link>
       </div>
       <div class="footer is-family-monospace">
         <strong>- Dinesh Kumar G &copy; Vue-Bookmarks</strong>

@@ -2,7 +2,6 @@
   <div id="app">
     <app-header></app-header>
     <router-view></router-view>
-    <bookmarks v-if="false"></bookmarks>
   </div>
 </template>
 
@@ -16,19 +15,28 @@ export default {
   name: "app",
   data() {
     return {
-      loggedIn: false
+      loggedIn: false,
     };
   },
   components: {
     "app-header": Header,
     bookmarks: Bookmarks,
-    signin: Signin
+    signin: Signin,
   },
   created() {
-    EventBus.$on("emittedEvent", data => {
-      this.loggedIn = data;
+    this.isLoggedIn = this.$store.state.isLoggedIn;
+    if (!this.isLoggedIn) {
+      this.$dialog.alert({
+        title: "Error",
+        message: "<strong>You need to Log in to access this page</strong>",
+        type: "is-danger",
+      });
+      this.$router.push({ name: "signin" });
+    }
+    EventBus.$on("emittedEvent", (data) => {
+      this.loggedIn = this.$store.state.isLoggedIn;
     });
-  }
+  },
 };
 </script>
 

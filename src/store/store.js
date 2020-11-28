@@ -1,10 +1,27 @@
+
+
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
 
 Vue.use(Vuex);
-export const store = new Vuex.Store({
+const vuexLocal = new VuexPersistence({
+    storage: window.localStorage,
+});
+
+export default new Vuex.Store({
     state: {
         currentEmail: '',
-        currentBookMarks: []
-    }
-})
+    },
+    mutations: {
+        setCurrentEmail: (state, email) => {
+            state.currentEmail = email;
+            state.isLoggedIn = email !== '';
+        },
+    },
+    actions: {
+    },
+    modules: {
+    },
+    plugins: [vuexLocal.plugin],
+});

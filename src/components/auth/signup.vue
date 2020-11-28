@@ -92,7 +92,6 @@
 
 <script>
 import { EventBus } from "../../Events.js";
-import $ from "jquery";
 
 import axios from "axios";
 export default {

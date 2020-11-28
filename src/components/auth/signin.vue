@@ -98,9 +98,8 @@ export default {
               type: "is-success"
             });
             this.loggedIn = true;
+            this.$store.commit('setCurrentEmail', this.email)
             EventBus.$emit("emittedEvent", this.loggedIn);
-            this.$store.state.currentEmail = this.email;
-
             this.$router.push({ name: "bookmarks" });
           } else {
             this.$dialog.alert({

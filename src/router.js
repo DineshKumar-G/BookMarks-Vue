@@ -22,7 +22,7 @@ const routes = [
     component: SigninPage,
   },
   {
-    path: '/bookmaks',
+    path: '/bookmarks',
     name: 'bookmarks',
     component: BookmarkPage,
   },
