@@ -25,6 +25,10 @@ export default {
   },
   created() {
     this.isLoggedIn = this.$store.state.isLoggedIn;
+    if(this.$route.path === '/'){
+      this.$router.push({path: '/'})
+      return;
+    }
     if (!this.isLoggedIn) {
       this.$dialog.alert({
         title: "Error",
