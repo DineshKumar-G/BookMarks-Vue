@@ -161,7 +161,7 @@ export default {
               formData
             )
             .then(res =>
-              Email.send({
+              /* Email.send({
                 Host: "smtp25.elasticemail.com",
                 Username: "testttt220188@gmail.com",
                 Password: "1016ba89-c158-45da-ad82-c9420860a2e8",
@@ -169,14 +169,14 @@ export default {
                 From: "testttt220188@gmail.com",
                 Subject: "Welcome to Vue Bookmarks by G Dinesh Kumar",
                 Body: "You can add bookmarks now!!"
-              }).then(message =>
+              }).then(message => */
                 this.$dialog.alert({
                   title: "Success",
                   message:
                     "<strong>Mail has been sent to your email Id and you can Log in now!</strong>",
                   type: "is-success"
                 })
-              )
+              // )
             )
             .catch(error => console.log(error));
         }
